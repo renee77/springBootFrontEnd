@@ -10,7 +10,8 @@
 
 <body>
     <input id="invoer">
-    <input type="button" onclick="start()" value="Klik hier">
+    <input type="button" onclick="maakAan()" value="Klik hier">
+    <input type="button" onclick="start()" value="allert">
 
     <script>
         function start() {
@@ -23,6 +24,20 @@
             }
             var2.open("GET", "https://springbootbackend.azurewebsites.net/endpoint1", true);
             var2.send();
+        }
+
+        function maakAan() {
+            var var2 = new XMLHttpRequest(); // jQuery Ajax   // fetch  // http
+            var2.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    var mijnobj = JSON.parse(this.responseText);
+                    alert(mijnobj.voornaam);
+                }
+            }
+            var2.open("POST", "https://springbootbackend.azurewebsites.net/endpoint1", true);
+            var2.send();
+
+            alert(mijnobj.voornaam);
         }
     </script>
 </body>
